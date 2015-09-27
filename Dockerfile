@@ -2,7 +2,8 @@ FROM alpine:latest
 
 MAINTAINER aussieade
 
-RUN apk update && apk add openvpn
+COPY docker-start.sh /docker-start.sh
+RUN apk update && apk add openvpn && chmod 755 /docker-start.sh
 
 EXPOSE 1194
-CMD ["/etc/openvpn/docker-start.sh"]
+CMD ["/docker-start.sh"]
